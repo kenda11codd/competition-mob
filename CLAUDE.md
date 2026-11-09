@@ -27,4 +27,17 @@ Shared instructions for Claude Code. This file is committed so every contributor
 
 ## Design preferences
 
+**Core UX philosophy (applies to every screen):**
+- Hand users each step on a silver platter. At any moment, it should be obvious what the user should do next, and the primary next action should be the most prominent thing on the screen.
+- Keep user abilities narrow. Prefer a small "this or that" choice over a menu of many options. Don't add actions, settings, or navigation a user doesn't need for their current task.
+- Avoid dashboards and menus by default. Use a dashboard only when it's genuinely necessary, and keep it minimal.
+- Clarity over density: plain language, one main purpose per screen, generous whitespace. Show status as a plain sentence ("Round 2 submissions are due Feb 9") rather than codes or badges alone.
+- Guide multi-step tasks (like creating a competition) as a step-by-step flow, one step at a time, rather than one big form.
+
+**Visual style:**
+- Round and playful, but still professional: pill-shaped buttons, circular icon buttons, large corner radii on cards. Bold, heavy headings in a rounded geometric sans (Outfit).
+- Lots of color, little information. Soft gray-green background, deep forest-green surfaces, and a lime accent. Use the tokens in `frontend/src/styles/global.css`; don't add new one-off colors.
+- Color directs attention. Each screen highlights the one thing the user should do next (dark forest card and/or lime action). Lime is the accent for the primary action, so use it sparingly and never for decoration everywhere.
+- Avoid the generic "AI SaaS" look: no default blue buttons, no purple gradients, no generic gray card grids with tiny badges, and no heavy shadows. Don't overuse saturated color.
+
 - Judging flow is the same for every round type (written, video, live): the judge first reviews the submission (reads, watches, or attends), then scores and gives feedback on a screen with two side-by-side panes, rubric on one side and feedback input on the other, each scrolling independently (not one shared page scroll). This is the current plan and may change if the UI doesn't work well; keep the review step and scoring screen as separate components so the layout is easy to rework.
