@@ -1,0 +1,322 @@
+/* Design tokens. Use these instead of one-off colors (see CLAUDE.md "Visual style"). */
+:root {
+  --bg: #e7eae4;           /* soft gray-green page background */
+  --surface: #f5f6f2;      /* light cards */
+  --ink: #142a10;          /* main text, near-black green */
+  --muted: #5a6655;        /* secondary text */
+  --forest: #1a3d14;       /* dark surfaces: featured card, dark buttons */
+  --forest-soft: #2b5422;  /* decorative shapes on dark surfaces */
+  --on-forest: #eef5e6;    /* text on dark surfaces */
+  --lime: #a8e06f;         /* accent for the primary action; use sparingly */
+  --lime-hover: #97d35b;
+  --lime-soft: #cdeeaa;    /* lime-tinted text on dark surfaces */
+
+  --radius-card: 32px;
+  --radius-pill: 999px;
+
+  font-family: 'Outfit', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+}
+
+h1,
+h2,
+p {
+  margin: 0;
+}
+
+.display {
+  font-size: clamp(2.4rem, 7vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: 1.35rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.lead {
+  font-size: 1.15rem;
+  color: var(--muted);
+  margin: 1rem 0 2rem;
+}
+
+/* Layout */
+.app-header {
+  padding: 1.25rem 1.5rem 0;
+}
+
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 2rem 1rem 4rem;
+}
+
+/* Buttons */
+button {
+  font: inherit;
+  cursor: pointer;
+  border: none;
+}
+
+button:focus-visible {
+  outline: 3px solid var(--lime);
+  outline-offset: 3px;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  border-radius: var(--radius-pill);
+  padding: 0.4rem 0.4rem 0.4rem 1.4rem;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+
+.pill-icon {
+  display: grid;
+  place-items: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.pill.lime {
+  background: var(--lime);
+  color: var(--ink);
+}
+
+.pill.lime:hover {
+  background: var(--lime-hover);
+}
+
+.pill.lime .pill-icon {
+  background: var(--forest);
+  color: var(--lime);
+}
+
+.pill.dark {
+  background: var(--forest);
+  color: var(--on-forest);
+}
+
+.pill.dark:hover {
+  background: var(--forest-soft);
+}
+
+.pill.dark .pill-icon {
+  background: var(--lime);
+  color: var(--ink);
+}
+
+.pill.large {
+  font-size: 1.15rem;
+  padding: 0.5rem 0.5rem 0.5rem 1.75rem;
+}
+
+.pill.large .pill-icon {
+  width: 2.9rem;
+  height: 2.9rem;
+}
+
+.pill.ghost {
+  background: transparent;
+  color: var(--muted);
+  padding: 0.6rem 1.2rem;
+  border: 1.5px solid #c9cfc4;
+}
+
+.pill.ghost:hover {
+  color: var(--ink);
+  border-color: var(--muted);
+}
+
+.circle {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 50%;
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 1.3rem;
+  transition: background 0.15s;
+}
+
+.circle:hover {
+  background: #d6dbd1;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: none;
+  padding: 0;
+  font-weight: 800;
+  font-size: 1.05rem;
+  color: var(--ink);
+}
+
+.brand-mark {
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 50%;
+  background: var(--forest);
+  box-shadow: inset -0.45rem -0.45rem 0 var(--lime);
+}
+
+/* Organizer home */
+.empty {
+  padding-top: 5rem;
+  max-width: 34rem;
+}
+
+.page-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.competition-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 1rem;
+}
+
+.card {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  background: var(--surface);
+  border-radius: var(--radius-card);
+  padding: 1.75rem 1.75rem 1.75rem 2rem;
+}
+
+.card-body {
+  position: relative;
+  z-index: 1;
+}
+
+.card-dates {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--muted);
+  margin-bottom: 0.35rem;
+}
+
+.status {
+  margin-top: 0.75rem;
+  color: var(--muted);
+}
+
+/* The one card that should draw the eye */
+.card.featured {
+  background: var(--forest);
+  color: var(--on-forest);
+  padding-top: 2.25rem;
+  padding-bottom: 2.25rem;
+}
+
+.card.featured h2 {
+  font-size: 1.75rem;
+  font-weight: 800;
+}
+
+.card.featured .card-dates {
+  color: var(--lime-soft);
+  opacity: 0.8;
+}
+
+.card.featured .status {
+  color: var(--lime-soft);
+  font-weight: 500;
+}
+
+.card.featured .circle {
+  background: var(--lime);
+}
+
+.card.featured .circle:hover {
+  background: var(--lime-hover);
+}
+
+.card.featured > button {
+  position: relative;
+  z-index: 1;
+}
+
+/* Playful decorative circles on the featured card */
+.card.featured::before,
+.card.featured::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  background: var(--forest-soft);
+  pointer-events: none;
+}
+
+.card.featured::before {
+  width: 11rem;
+  height: 11rem;
+  right: -3rem;
+  top: -5rem;
+}
+
+.card.featured::after {
+  width: 5rem;
+  height: 5rem;
+  right: 7.5rem;
+  bottom: -2.5rem;
+}
+
+.past {
+  margin-top: 3rem;
+}
+
+.past .competition-list {
+  margin-top: 1rem;
+}
+
+/* Placeholder screens */
+.back {
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 560px) {
+  .card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
